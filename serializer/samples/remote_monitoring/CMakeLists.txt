@@ -5,8 +5,8 @@
 
 compileAsC99()
 
-if(NOT ${use_amqp})
-	message(FATAL_ERROR "remote_monitoring being generated without amqp support")
+if(NOT ${use_mqtt})
+	message(FATAL_ERROR "remote_monitoring being generated without mqtt support")
 endif()
 
 set(remote_monitoring_c_files
@@ -33,7 +33,6 @@ include_directories(. ${IOTHUB_CLIENT_INC_FOLDER})
 link_directories(${whatIsBuilding}_dll ${SHARED_UTIL_LIB_DIR})
 
 add_executable(remote_monitoring ${remote_monitoring_c_files} ${remote_monitoring_h_files})
-target_link_libraries(remote_monitoring serializer iothub_client iothub_client_amqp_transport)
+target_link_libraries(remote_monitoring serializer iothub_client iothub_client_mqtt_transport)
 
 linkSharedUtil(remote_monitoring)
-linkUAMQP(remote_monitoring)
