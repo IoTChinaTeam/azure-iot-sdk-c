@@ -40,7 +40,7 @@ build_iot()
     mkdir $sdk_root/$openwrt_folder/$openwrt_sdk_folder/package/$iot_dir
     mkdir $sdk_root/$openwrt_folder/$openwrt_sdk_folder/package/$iot_dir/src
     cp -f "$working_dir/Makefile.iot" "$sdk_root/$openwrt_folder/$openwrt_sdk_folder/package/$iot_dir/Makefile"
-    cd "$working_dir/../../.."
+    cd "$working_dir/../.."
     cp -R -f . "$sdk_root/$openwrt_folder/$openwrt_sdk_folder/package/$iot_dir/src"
     cd "$sdk_root/$openwrt_folder/$openwrt_sdk_folder"
     make V=s "package/$iot_dir/compile"
