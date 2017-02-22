@@ -10,6 +10,7 @@ openwrt_folder="openwrt"
 openwrt_sdk_folder="sdk"
 working_dir=$PWD
 package_dir="package"
+sdk_override=false
 
 MACHINE_TYPE=`uname -m`
 
@@ -34,6 +35,7 @@ process_args ()
         elif [ "$1" == "-s" ] || [ "$1" == "--sdk" ]
         then
           sdk_repo="$2"
+          sdk_override=true
         else
           usage
         fi
@@ -78,7 +80,7 @@ download_sdk()
     rm -r -f $openwrt_sdk_folder
   fi
 
-  if [ "$1" == "-s" ] || [ "$1" == "--sdk" ]
+  if [ sdk_override ]
   then
     wget $sdk_repo -O openwrtsdk.tar.bz2
   elif [ ${MACHINE_TYPE} == 'x86_64' ]
