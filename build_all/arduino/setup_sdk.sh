@@ -80,7 +80,7 @@ download_sdk()
     rm -r -f $openwrt_sdk_folder
   fi
 
-  if [ sdk_override ]
+  if [ "$sdk_override" = true ]
   then
     wget $sdk_repo -O openwrtsdk.tar.bz2
   elif [ ${MACHINE_TYPE} == 'x86_64' ]
